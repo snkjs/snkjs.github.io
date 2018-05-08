@@ -1,0 +1,37 @@
+@charset "gb2312";
+/* CSS Document */
+/*body{ background-color:#FFF;}*/
+.alert_bg_color{ position:fixed;top:0;left:0; width:100%; height:100%; z-index:100; background-color:#000; opacity:0.5;}
+.alert_bg_con{ display:none; width:451px; min-height:420px;height: auto; position:fixed; z-index:100; left:50%; margin-left:-225px; top:50%; margin-top:-210px; background-color:#FFF; -moz-box-shadow:0px 0px 10px #ccc;-webkit-box-shadow:0px 0px 10px #ccc;box-shadow:0px 0px 10px #ccc;}
+.alert_Close{height:40px; line-height:40px; text-align:center; right:0; top: 0; font-size:36px;color:#e3e4e3; display: block; text-align: right; padding-right: 10px;}
+.alert_title{ color:#757575; text-align:center; font-size:20px;clear: both;}
+.number_login{ width:342px; height:20px; margin:15px auto 5px auto;}
+.number_login a{ display:inline-block; float:right; background:url(/images/login/name.png) no-repeat left center;padding-left:23px; line-height:20px; color:#757575; font-size:12px;}
+.border_div{border:1px solid #e8e8e8; width:342px; height:45px; margin:0 auto; overflow:hidden; margin-bottom:10px;}
+.input1{ width:300px; height:45px; background:url(/images/login/phone1.png) no-repeat left center;background-size:17px;padding-left:22px; font-size:12px; color:#ccc; border:0;margin-left:20px; line-height:45px;}
+.input2{ width:200px; margin-left:20px; float:left;font-size:12px; color:#ccc; border:0; line-height:45px;}
+.border_div a{ display:block; overflow:hidden; border-left:2px solid #eeeeee; line-height:20px; height:20px; font-size:12px; color:#63b6f9; text-align:center; margin-top:13px;}
+.login_a{ display:block; width:344px; height:40px; line-height:40px; text-align:center; color:#FFF; font-size:14px; border-radius:4px; background-color:#4bb0f7; margin:0 auto;}
+.pwd{ overflow:hidden;width:344px; margin:10px auto 20px auto;}
+.pwd a{ display:inline-block; font-size:14px; color:#3582f8;}
+.pwd1{ float:left;}
+.pwd2{ float:right;}
+.Other_div{ width:344px; margin:0 auto;margin-bottom: 20px;}
+.Other_div span{ display:block; background:url(/images/login/border.jpg) left center repeat-x; text-align:center;}
+.Other_div span em{ font-size:14px; color:#999; background-color:#FFF; padding:0 10px;}
+.Other_a{margin-top:20px; overflow:hidden; text-align: center;}
+.Other_a a{ display:inline-block; width:40px; height:40px; margin:0 20px;}
+.Other_a a.wx-code-div-back-btn{display: none;}
+.Other_a a img{ width:100%;}
+.alert_bg_con1{ display:none; width:451px; height:471px; position:fixed; z-index:100; left:50%; margin-left:-225px; top:50%; margin-top:-235px; background-color:#FFF; -moz-box-shadow:0px 0px 10px #ccc;-webkit-box-shadow:0px 0px 10px #ccc;box-shadow:0px 0px 10px #ccc;}
+.number_login .phone_a{background:url(/images/login/phone.png) no-repeat left center;}
+.input3{ width:292px; height:45px; background:url(/images/login/name1.png) no-repeat left center;padding-left:30px; background-size:25px;font-size:12px; color:#ccc; border:0;margin-left:20px; line-height:45px;}
+.input4{background:url(/images/login/pwd.png) no-repeat left center;background-size: 25px;}
+.border_div1{ width:344px; overflow:hidden; margin:0 auto; margin-bottom:10px;}
+.input5{ width:205px; height:45px;border:1px solid #e8e8e8;padding-left:20px; line-height:45px; float:left; margin-right:12px;font-size:12px; color:#ccc; }
+.border_div1 p{ display:block; overflow:hidden; height:45px;border:1px solid #e8e8e8;}
+.ev_empy{margin-left: 20px;width: 342px;margin: 0 auto;}
+.ev_empy p span{color: red; text-align: left;}
+.wx-code-div{display: none;}
+.wx-code-div .iframe-inner{width:300px; height: 270px; margin:0 auto;}
+.wx-code-div .iframe-inner iframe{width:300px; height: 270px;}

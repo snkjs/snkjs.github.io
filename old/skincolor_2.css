@@ -1,0 +1,153 @@
+@charset "gb2312";
+/* CSS Document */
+/*---站点功能菜单样式---*/
+.site_fn_menu,.site_fn_menu li.cur a,.site_fn_menu li a:hover{
+	background-image:url(http://img.ev123.com/pic/gs_2010/skin_pk/site_fn_menu_bg.png);/**/
+	}
+.site_fn_menu{
+	background-color:#478BD5;
+	border-color:#D5D5D5;
+	background-position:0 0;
+	background-repeat:repeat-x;/**/
+	}
+  .site_fn_nav a{
+	  color:#000;
+	  }
+  .site_fn_nav li.cur a,.site_fn_nav li a:hover{
+	  background-position:0 -51px;
+	  background-repeat:no-repeat;/**/
+	  background-color:#63A1DD;
+	  color:#00c;
+	  }
+/*--站点功能搜索样式--*/
+.site_fn_search form{
+	border:1px solid #ccc;
+	background-color:#fff;
+	}
+  .site_fn_search .keyword{
+	  background-color:#fff;
+	  border-width:0 1px 0 0;
+	  border-style:solid;
+	  border-color:#ccc;
+	  font:700 14px/24px "微软雅黑";
+	  }
+  .site_fn_search .submit{
+	  background-color:transparent;
+	  border:0px;
+	  color:#00c;
+	  font:100 14px/20px "arial";
+	  }
+  /*-网站功能面包屑文字颜色-*/
+	.crumbs_font{color:#00c;}
+	  .crumbs_font a{color:#00c;}
+	  .crumbs_font a:hover{text-decoration:underline;}
+/*--网站组件模块项--*/
+	.site_fn_column{border-color:#d5d5d5;}
+	/*--网站组件模块项标题样式--*/
+		.fn_column_tit{
+		background-color:#eee;
+		border-color:#ccc;
+		background:url(http://img.ev123.com/pic/gs_2010/skin_pk/big_column_tit.png) repeat-x;/**/
+		}
+	  .fn_column_tit strong{color:#000;}
+	  .fn_column_tit .more,.fn_column_tit .a{color:#00c;}
+	  .fn_column_tit .more:hover,.fn_column_tit .a:hover{color:#c00;}
+	/*--网站组件模块项内容样式--*/
+		.fn_column_c{background-color:#fff;}/*-栏目模块背景颜色-*/
+  
+  /*-类别文字颜色-*/		
+  .class_list{color:#444; border-color:#CCC;}
+  .class_list:hover{background-color:#efefef;}
+	  /*-大类别文字颜色-*/
+	  .class_list_big{color:;}
+	  .class_list_big a{color:#236DCC;}
+	  	.class_list_big a:hover{color:#00c;text-decoration:underline;}
+	  	.class_list_big a.more{color:#444;}
+	  	.class_list_big a.more:hover{color:#00c;}
+	  /*-小类别文字颜色-*/
+	  .class_list_small{color:#999;}
+	  .class_list_small a{color:#444}
+	  	.class_list_small a:hover{color:#236DCC;text-decoration:underline;}
+	  	
+	/*-文字列表颜色-*/		
+  .text_list{}
+  .text_list_li{border-color:#ccc;}/*-文字列表底线颜色-*/
+	  .text_list_li a{color:#444;}
+		  .text_list_li a:hover{color:#00c;}
+	  /*-文字列表右边文字颜色-*/	
+	  .text_list_other{color:#999; font-size:12px;}
+	/*-文字列表颜色-*/		
+	.pictxt_list{}
+		.pictxt_list_li{border-color:#ccc;}
+		.pictxt_list_li a{}
+			.pictxt_list_li .pic{border-color:#ccc;}
+			.pictxt_list_li .pic_name a{color:#444;}
+			.pictxt_list_li .pic_name a:hover{color:#00a;}
+			.pictxt_list_li .pic_attr{color:#999;}
+			
+	/*--内部tab样式--*/
+	 .inner_tab{border-color:#ccc;}
+	  .inner_tab .tab_t{ background-color:#eee; border-color:#aaa;}
+	  .inner_tab .tab_t a{color:#444;}
+	  .inner_tab .tab_t li{border-color:#aaa;}
+	  .inner_tab .tab_t a:hover{text-decoration:underline;}
+		.inner_tab .tab_t li.cur,.inner_tab .tab_c{background-color:#fff;}
+		.inner_tab .tab_t li.cur a{font-weight:800;}
+		.inner_tab .tab_c{color:#000;}
+
+/*--边线颜色--*/
+  .add_bd{border-color:#ccc;}/*-广告边线颜色-*/
+  .dashed_divide{border-color:#ccc; border-style:dashed;}/*-分界虚线颜色-*/
+  .input_bd{border-color:#7F9DB9;}/*-输入域边框色-*/
+  .textarea_bd{border-color:#7F9DB9;}/*-输入文本域边框色-*/
+
+/*-特殊输入区-*/
+	.edit_prompt{background-color:#EFEFEF;}	
+
+/*--文字颜色--*/
+  /*-数字提示文字颜色-*/
+  .num_prompt_font,.num_prompt_font_a{color:#999;}
+	  .num_prompt_font_a:hover{}
+  /*-时间提示-*/
+  .time_prompt_font,.time_prompt_font_a{color:#555;}
+	.time_prompt_font_a:hover{color:;}
+  /*-提示文字颜色-*/
+  .prompt_font,.prompt_font_a{color:#888;}
+	.prompt_font_a:hover{color:#c00; text-decoration:underline;}
+/*-错误文字提示-*/
+	.err_prompt_font{color:#c00;}
+/*-正确文字提示-*/
+	.err_prompt_font{color:#0cc;}	
+	/*--好坏提示文字--*/
+		.good_prompt_font{color:#008000;}
+		.bad_prompt_font{color:#c00;}
+  /*-会员名字a连接颜色-*/
+  .user_name_a{color:#930;}
+  	.user_name_a:hover{text-decoration:underline;}
+	/*--*/
+  /*--文本文字颜色--*/
+	/*--无内容--*/
+	.null{color:#000;}
+	/*--文字内容--*/
+	  .text_font{color:#000;}
+  /*-更多文字颜色-*/
+	.more{color:#8A2200;}
+  /*-个标题文字颜色-*/
+	  h1.h1_tit{color:#000;}
+	  h2.h2_tit{color:#000;}
+	  h3.h3_tit{color:#000;}
+	  h4.h4_tit{color:#000;}
+	  h5.h5_tit{color:#000;}
+	  h6.h6_tit{color:#000;}
+
+/*--按钮样式--*/
+	.small_but{display:inline-block; height:20px; border-width:1px; border-style:solid; padding:0 10px; line-height:20px; cursor:pointer;}
+	.small_but:hover{border-color:#00c; background-color:#00c;color:#fff;}
+	.small_but{border-color:#999; background-color:#ccc;}
+		 .list_icon{font-family:"宋体";}
+
+
+	/*-输入区域label字颜色-*/
+	.label_color{color:#000}
+	
+		
