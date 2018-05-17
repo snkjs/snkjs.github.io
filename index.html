@@ -4,18 +4,82 @@
         <meta charset="UTF-8">
         <title>司南科技社</title>
         <script src="js/jquery.min.js"></script>
+        <script src="js/jqueryui.js"></script>
+        <style>
+        	body{
+        		margin: 0px;
+        	}
+        	#logo_div{
+        		height: 100px;
+        		width: 400px;
+        		position: absolute;
+        		-moz-user-select: none;
+        		-ms-user-select: none;
+        		-webkit-user-select: none;
+        		/*border: 1px solid black;*/
+        	}
+        	#logo_img{
+        		width: 100px;
+        		height: 100px;
+        		position: absolute;
+        		left: 150px;
+        	}
+        	#snkjs{
+        		/*border: 1px solid red;*/
+        		position: absolute;
+        		font: "微软雅黑";
+        		font-size: 58px;
+        		width: 0px;
+        		height: 80px;
+        		top: 10px;
+        		/*display: none;*/
+        		opacity: 0.2;
+        		left: 250px;
+        		overflow: hidden;
+        	}
+        	#title_bar{
+        		/*border: 1px solid blue;*/
+        		height: 50px;
+        	}
+        </style>
     </head>
 
     <body>
-        <h1>内江六中 司南科技社</h1>
-        <p>这里是 内江六中 司南科技社</p>
-        <p>网站正在建设中，其貌不扬，请多包涵......</p>
-        <p>如果您对于此网站的开发、UI、逻辑等有什么意见或建议，<br>
-            敬请联系邮箱：<a href="mailto:nlsnkjs@qq.com">nlsnkjs@qq.com</a></p>
-        <br>
-        <p>
-            <a href="./link/index.html">司南科技社 所有链接</a> <br>
-        </p>
+    	<div id="logo_div" style="display: none;">
+    		<img id="logo_img" src="image/logo.png" draggable="false"/>
+    		<span id="snkjs"><span style="float: right;overflow: hidden;"><span>司</span><span>南</span><span>科</span><span>技</span><span>社</span></span></span>
+    	</div>
+    	<script>
+    		$(function(){
+    			$("#logo_div").css({
+    				left:((window.innerWidth-$("#logo_div").width())/2),
+    				top:((window.innerHeight-$("#logo_div").height())/2)
+    			}).show();
+    			$("#logo_img").delay(500).animate({left: "0px"} , 1000);
+    			$("#snkjs").delay(500).animate({width:300,left: "100px",opacity: 1} , 1000);
+				setTimeout(function(){
+					$("#logo_img").animate({width:"50px",height:"50px"} , 1000);
+					$("#snkjs").animate({width:"150px",height:"40px",top:"5px",left:"50px",fontSize:"29px"} , 1000);
+					$("#logo_div").animate({top:"0px",left:"0px",width:"200px",height:"50px"} , 1000 , function(){
+						$("#main_div").fadeIn(1000);
+						var logo_div = $("#logo_div").detach();
+						$("#title_bar").append(logo_div);
+					});
+				} , 2000);
+//				$("#snkjs").fadeIn(1000);
+    		});
+    	</script>
+    	<div id="title_bar"></div>
+	    <div id="main_div" style="display: none;">
+	        <p>这里是 内江六中 司南科技社</p>
+	        <p>网站正在建设中，其貌不扬，请多包涵......</p>
+	        <p>如果您对于此网站的开发、UI、逻辑等有什么意见或建议，<br>
+	            敬请联系邮箱：<a href="mailto:nlsnkjs@qq.com">nlsnkjs@qq.com</a></p>
+	        <br>
+	        <p>
+	            <a href="./link/index.html">司南科技社 所有链接</a> <br>
+	        </p>
+	    </div>
     </body>
     <script>
         $("a").attr("target","_blank");
