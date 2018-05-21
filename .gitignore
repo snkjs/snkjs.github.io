@@ -1,1 +1,4 @@
 .project
+*.code-workspace
+*.doc
+*.docx

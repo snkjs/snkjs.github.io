@@ -3,21 +3,121 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>NL科技fans报纸账单</title>
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/jqueryui.min.js"></script>
+		<script src="js/bill.json"></script>
 	</head>
 <style>
-table{
-border-collapse:collapse;
-}
-th,td{
-width: 20px;
-border: 1px solid green;
-}
+	table {
+		border-collapse: collapse;
+	}
+
+	th,
+	td {
+		width: 20px;
+		border: 1px solid skyblue;
+		padding: 5px;
+		text-align: center;
+	}
 </style>
 	<body>
-<table>
-<tr><th>1</th><th>2</th><th>6</th><tr>
-<tr><td>1</td><td>2</td><td>5</td><td>6</td><tr>
-<tr><td>3</td><td>5</td><tr>
-</table>
+<table ><tbody id="tb"><tr><th>-</th></tr></tbody></table>
 	</body>
+<script>
+	var users = new Array;
+	users = the_users;
+	var x = ($("#tb > tr").length-1);
+	var y=$("#tb > tr").eq(0).children().length-1;
+	var cur_y=0;
+// console.log("x:"+x+" y:"+y);
+	function fill(x0,y0,the_data){
+		if(x0>x || y0>y){
+			var maxX,maxY;
+			maxX = x0>x?x0:x;
+			maxY = y0>y?y0:y;
+			enlarge_table(maxX,maxY);
+		}
+		$("#tb > tr").eq(x0).children().eq(y0).html(the_data);
+// console.log("("+x0+","+y0+")填入了"+$("#tb > tr").eq(x0).children().eq(y0).html());
+	}
+	function enlarge_table(toX,toY){
+		var i;
+		var need_to_add_X = toX-($("#tb > tr").length-1);
+		for(i=1;i<=need_to_add_X;i++){
+			$("#tb").append($("<tr></tr>"));
+		}
+		var need_to_add_Y = (toY-($("#tb > tr").eq(0).children().length - 1));
+		for(i=1;i<=need_to_add_Y;i++){
+			$("#tb > tr").eq(0).append($("<th>-</th>"));
+		}
+		var trs=$("#tb > tr");
+		for(i=1;i<trs.length;i++){
+			var need_to_add_cell = toY-(trs.eq(i).children().length - 1);
+// console.log(trs.eq(i).children().length - 1);
+// if(need_to_add_cell!=0) console.log("第"+i+"行加入"+need_to_add_cell+"个<td>");
+			for(j=1;j<=need_to_add_cell;j++){
+				trs.eq(i).append($("<td>-</td>"));
+				// console.log("第"+i+"行，添加一个td，表达式值："+need_to_add);
+			}
+		}
+		x=toX;
+		y=toY;
+		// console.log("调整大小后x:"+x+" y:"+y);
+	}
+	function fill_column(th_str,data_name){
+		fill(0,cur_y,th_str);
+		var i=0;
+		for(i=1;i<=users.length;i+=1){
+// console.log("接下来，fill("+i+","+cur_y+","+ users[i-1][data_name] +")");
+			fill(i,cur_y, (users[i-1])[data_name]);
+		}
+		cur_y+=1;
+		// console.log("cur_y: "+cur_y);
+	}
+	function update_a_month(month){
+		users.forEach(function (obj,index,array) {
+			obj.rest2 = obj.rest1 + obj.charge;
+			obj.rest3 = obj.rest2 + (obj.cost*obj.bio);
+		});
+		for(i=1;i<=users.length;i+=1){
+			fill(i,0, (users[i-1])["class"]);
+			fill(i,1, (users[i-1])["name"]);
+			fill(i,2, (users[i-1])["bio"]);
+		}
+		fill_column((month==1?12:month-1)+"月充值" , "charge");
+		fill_column("余额" , "rest2");
+		fill_column((month)+"月派发" , "cost");
+		fill_column("余额" , "rest3");
+		users.forEach(function (obj,index,array) {
+			obj.rest1 = obj.rest3;
+			// obj.charge = 0;
+			obj.rest2 = 0;
+			// obj.cost = 0;
+			obj.rest3 = 0;
+		});
+	}
+	function User(the_class,name,money,bio) {
+		this.class = parseInt(the_class);
+		this.name = name;
+		this.rest1 = parseInt(money);
+		this.charge = 0;
+		this.rest2 = 0;
+		this.bio = parseInt(bio);
+		this.cost = 0;
+		this.rest3 = 0;
+		return this;
+	}
+	function add_user(the_class,name,money,bio) {
+		var new_user = new User(the_class,name,money,bio);
+		users.push(new_user);
+	}
+	add_user(1920,"TCP",20,1);
+	fill_column("班级","class");
+	fill_column("姓名","name");
+	fill_column("人数","bio");
+	update_a_month(1);
+	update_a_month(2);
+	add_user(1920,"TCPp",10,1);
+	update_a_month(3);
+</script>
 </html>
