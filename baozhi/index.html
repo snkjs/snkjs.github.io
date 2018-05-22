@@ -2,16 +2,15 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>NL科技fans报纸账单</title>
-		<script src="../js/jquery.min.js"></script>
-		<script src="../js/jqueryui.min.js"></script>
+		<title>《NL科技fans》报纸账单</title>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jqueryui.min.js"></script>
 		<script src="js/bill.js"></script>
 	</head>
 <style>
 	table {
 		border-collapse: collapse;
 	}
-
 	th,
 	td {
 		width: 20px;
@@ -19,9 +18,17 @@
 		padding: 5px;
 		text-align: center;
 	}
+	#give_me_order{
+		margin-top: 10px;
+		width: 260px;
+		height: 50px;
+		font-size: 20px;
+	}
 </style>
 	<body>
-<table><caption>NL科技fans报纸账单</caption><tbody id="tb"><tr><th>-</th></tr></tbody></table>
+<table><caption>《NL科技fans》报纸账单</caption><tbody id="tb"><tr><th>-</th></tr></tbody></table>
+	<button id="give_me_order">列出所有应发报纸的人名单</button>
+<table hidden id="table2"><caption>应得报纸：</caption><tbody id="tb2"></tbody></table>
 	</body>
 <script>
 	var users = new Array;
@@ -74,25 +81,31 @@
 		cur_y+=1;
 		// console.log("cur_y: "+cur_y);
 	}
-	function update_a_month(month){
+	function fill_table_starter(){
+		for(i=1;i<=users.length;i+=1){
+			fill(i,0,i);
+			fill(i,1, (users[i-1])["class"]);
+			fill(i,2, (users[i-1])["name"]);
+			fill(i,3, (users[i-1])["bio"]);
+		}
+	}
+	function update_a_month(month,newspaper_money){
 		users.forEach(function (obj,index,array) {
 			obj.rest2 = obj.rest1 + obj.charge;
+			obj.cost = (obj.rest2+newspaper_money)>=0?newspaper_money:0;
+			// obj.cost = obj.rest2<=newspaper_money?newspaper_money:0;
 			obj.rest3 = obj.rest2 + (obj.cost*obj.bio);
 		});
-		for(i=1;i<=users.length;i+=1){
-			fill(i,0, (users[i-1])["class"]);
-			fill(i,1, (users[i-1])["name"]);
-			fill(i,2, (users[i-1])["bio"]);
-		}
+		fill_table_starter();
 		fill_column((month==1?12:month-1)+"月充值" , "charge");
 		fill_column("余额" , "rest2");
 		fill_column((month)+"月派发" , "cost");
 		fill_column("余额" , "rest3");
 		users.forEach(function (obj,index,array) {
 			obj.rest1 = obj.rest3;
-			// obj.charge = 0;
+			obj.charge = 0;
 			obj.rest2 = 0;
-			// obj.cost = 0;
+			obj.cost = 0;
 			obj.rest3 = 0;
 		});
 	}
@@ -111,13 +124,65 @@
 		var new_user = new User(the_class,name,money,bio);
 		users.push(new_user);
 	}
-	add_user(1920,"TCP",20,1);
+	function read_bill(bill){
+		bill.forEach(function (obj,index,array){
+			switch (obj.type) {
+				case "add":
+				case "add_user":{
+					// console.log("第"+index+'个，type(add)：' + obj.type);
+					add_user(obj.class,obj.name,obj.money,obj.bio);
+				}
+				break;
+				case "charge":{
+					var tmp_user = users.find(function(obj2, index, arr) {
+						return (obj2.class == obj.class) && (obj2.name == obj.name);
+					});
+					tmp_user.charge += obj.money;
+					// console.log("第"+index+'个，type(charge)：' + obj.type +"\n"+JSON.stringify(tmp_user));
+				}
+				break;
+				case "sell":
+				case "sell_newspaper":{
+					// console.log("第"+index+'个，type(sell)：' + obj.type);
+					update_a_month(obj.month,obj.money);
+				}
+				break;
+				default:{
+					console.log("第"+index+'个出现无法识别的bill格式："type"，对象字符串是：\n' + JSON.stringify(obj));
+				}
+				break;
+			}
+		});
+	}
+	function search_item(the_class,name) {
+		return users.filter(function(obj,index,array){
+			if(the_class != ""){
+				if(name == ""){
+					return obj.class == parseInt(the_class);
+				}
+				else{
+					return (obj.class == the_class) && (obj.name == name);
+				}
+			}
+			else if(name != ""){
+				return obj.name == name;
+			}
+		});
+	}
+	fill_column("id","id");
 	fill_column("班级","class");
 	fill_column("姓名","name");
 	fill_column("人数","bio");
-	update_a_month(1);
-	update_a_month(2);
-	add_user(1920,"TCPp",10,1);
-	update_a_month(3);
+	read_bill(bill);
+	$("#give_me_order").click(function (){
+		$("#table2").show();
+		$("#tb > tr").each(function (index,obj,array) {
+			console.log(parseInt($(obj).children().eq($(obj).children().length-2).html()));
+			if(parseInt($(obj).children().eq($(obj).children().length-2).html()) < 0){
+				console.log(obj);
+				$("#tb2").append(obj);
+			}
+		});
+	});
 </script>
 </html>
