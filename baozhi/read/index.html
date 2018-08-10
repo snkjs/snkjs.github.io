@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>科技社在线阅读系统</title>
+		<link rel="stylesheet" href="css/view.css" />
+		<!--<link rel="stylesheet" href="css/style.css" />-->
+		<script src="js/jquery-2.1.0.js"></script>
+	</head>
+	<body>
+		<aside id="sidebar" class="sidebar sidebar-colosred sidebar-fixed-left open">
+			<span>这是侧边栏的内容<br ></span>
+		</aside>
+		<div id="sidebar_overlay"></div>
+		<button id="left_side_icon">
+			<span id="left_side_layer"></span>
+		</button>
+		<div id="main">
+			<div class="card"></div>
+			
+			.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+			.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+			.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+		</div>
+		<footer id="foot">
+			<div id="footer_left_part">
+				<a href="https://github.com/Elepover" target="_blank">
+					<button class="footer_link_button" style="background-image: url(img/github.svg);">
+						<!--<img class="link_img" src="img/github.svg" width="25px"/>-->
+					</button>
+				</a>
+			</div>
+			<div id="footer_center_part">
+				Copyright&nbsp;©&nbsp;2017&nbsp;-<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>&nbsp;内江六中 司南科技社
+			</div>
+			<div id="footer_right_part">
+				<div>
+					<div>Powered by <a href="https://tcpsoftware.github.io" target="_blank">TCPSoft</a></div>
+				</div>
+			</div>
+		</footer>
+	</body>
+	<script>
+		function toggle_sidebar(){
+			if($("#sidebar").hasClass("visible")){
+				$("#sidebar").animate({left:"-280px"},200);//让侧边栏消失
+				$("body").eq(0).css("overflow","auto");
+				$("#sidebar").toggleClass("visible");
+				$("#sidebar_overlay").removeClass("active");
+			}
+			else{
+				$("#sidebar").animate({left:"0px"},400);//让侧边栏出现
+				$("body").eq(0).css("overflow","hidden");
+				$("#sidebar").toggleClass("visible");
+				$("#sidebar_overlay").addClass("active");
+			}
+		}
+		$(document).ready(function(){
+			$("#left_side_icon").click(function (){toggle_sidebar();});
+			$("#sidebar_overlay").click(function (){toggle_sidebar();});
+		});
+	</script>
+</html>

@@ -1,0 +1,153 @@
+*{
+	box-sizing: border-box;
+}
+aside#sidebar{
+	box-sizing: border-box;
+	position: fixed;
+	width: 280px;
+	top: 0px;
+	bottom: 0px;
+	left: -280px;
+	z-index: 10;
+	background-color: white;
+	border: 1px black solid;
+}
+#left_side_icon {
+    margin: 0 0 0 1pc;
+    cursor: pointer;
+    border: none;
+    background: 0 0;
+    outline: 0;
+    position: fixed;
+    top: 2pc;
+    z-index: 11;
+    height: 32px;
+    width: 32px
+}
+#left_side_layer {
+    width: 20px;
+    background: #aaa;
+    position: relative;
+}
+#left_side_layer,#left_side_layer:after,#left_side_layer:before {
+    display: block;
+    height: 2px;
+}
+#left_side_layer:after,#left_side_layer:before {
+    width: inherit;
+    position: absolute;
+    background: inherit;
+    left: 0;
+    content: '';
+}
+#left_side_layer:before {
+    bottom: 5px;
+}
+#left_side_layer:after {
+    top: 5px;
+}
+#sidebar_overlay.active {
+    opacity: .5;
+    visibility: visible;
+}
+#sidebar_overlay {
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    background: #000;
+    z-index: 9;
+}
+#main{	
+	border: 1px red solid;
+	margin: 0 auto;
+	margin-top: 170px;
+	padding: 0;
+	width: 100%;
+	max-width: 900px;
+}
+.card{
+	border: 1px greenyellow solid;
+	width: 100%;
+	height: 200px;
+}
+#foot{
+	/*border: 1px mediumpurple solid;*/
+	width: 100%;
+	height: 120px;
+	margin-top: 5pc;
+	padding: 40px;
+	background-color: #fff;
+	align-items: center;
+	color: #9e9e9e;
+	
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-flow: row wrap;
+	flex-flow: row wrap;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+}
+.button_to_github{
+	background-image: url(../img/github.svg);
+}
+.footer_link_button{
+	margin: 0 1pc;
+	width: 24px;
+	height: 24px;
+	padding: 0;
+	border: 0;
+	border-radius: 2px;
+	background-color: transparent;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	opacity: .46;
+	cursor: pointer;
+}
+#footer_left_part{
+	display: inline-block;
+	-webkit-box-ordinal-group: 1;
+	-ms-flex-order: 0;
+	order: 0;
+}
+#footer_center_part{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+#footer_right_part{
+	display: inline-block;
+		margin-right: 60px;
+	-webkit-box-ordinal-group: 2;
+	-ms-flex-order: 1;
+	order: 1;
+}
+body{
+	margin: 0px;
+	background-color: rgb(240,240,240);
+	font-size: 14px;
+}
+@media only screen and (min-width: 100px) and (max-width: 480px) {
+	/*手机客户端*/
+	#sidebar > span:after{
+		content: "现在是手机。";
+	}
+}
+@media only screen and (min-width: 481px) and (max-width: 840px){
+	/*平板客户端*/
+	#sidebar > span:after{
+		content: "现在是平板。";
+	}
+}
+@media only screen and (min-width: 641px){
+	/*电脑客户端*/
+	#sidebar > span:after{
+		content: "现在是电脑。";
+	}
+}
