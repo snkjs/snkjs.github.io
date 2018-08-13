@@ -132,22 +132,28 @@ body{
 	margin: 0px;
 	background-color: rgb(240,240,240);
 	font-size: 14px;
+	/*background-image: url("https://bing.ioliu.cn/v1");*/  /*API NO.1*/
+	background-image: url("https://apis.elepover.com/bing");/*API NO.2*/
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	
 }
 @media only screen and (min-width: 100px) and (max-width: 480px) {
 	/*手机客户端*/
 	#sidebar > span:after{
-		content: "现在是手机。";
+		content: "现在系统识别为手机。";
 	}
 }
 @media only screen and (min-width: 481px) and (max-width: 840px){
 	/*平板客户端*/
 	#sidebar > span:after{
-		content: "现在是平板。";
+		content: "现在系统识别为平板。";
 	}
 }
 @media only screen and (min-width: 641px){
 	/*电脑客户端*/
 	#sidebar > span:after{
-		content: "现在是电脑。";
+		content: "现在系统识别为电脑。";
 	}
 }
